@@ -62,15 +62,13 @@ public class HumanoidArmorLayerMixin {
             MultiBufferSource multiBufferSource,
             int i,
             HumanoidModel<?> humanoidModel,
-            float f,
-            float g,
-            float h,
+            int j,
             ResourceLocation resourceLocation,
             CallbackInfo ci
     ) {
         if (damagetintplus$hurt && Config.INSTANCE.getValues().getShowOnPlayerArmor()) {
             VertexConsumer vertexConsumer = multiBufferSource.getBuffer(DamageTintPlus.INSTANCE.getOverrideRenderType(resourceLocation));
-            humanoidModel.renderToBuffer(poseStack, vertexConsumer, i, OverlayTexture.RED_OVERLAY_V, f, g, h, 1.0F);
+            humanoidModel.renderToBuffer(poseStack, vertexConsumer, i, OverlayTexture.RED_OVERLAY_V, j);
             ci.cancel();
         }
     }
@@ -93,7 +91,7 @@ public class HumanoidArmorLayerMixin {
         if (damagetintplus$hurt && Config.INSTANCE.getValues().getShowOnPlayerArmor()) {
             TextureAtlasSprite textureAtlasSprite = this.armorTrimAtlas.getSprite(bl ? armorTrim.innerTexture(holder) : armorTrim.outerTexture(holder));
             VertexConsumer vertexConsumer = textureAtlasSprite.wrap(multiBufferSource.getBuffer(DamageTintPlus.INSTANCE.getOverrideRenderType(Sheets.ARMOR_TRIMS_SHEET)));
-            humanoidModel.renderToBuffer(poseStack, vertexConsumer, i, OverlayTexture.RED_OVERLAY_V, 1.0F, 1.0F, 1.0F, 1.0F);
+            humanoidModel.renderToBuffer(poseStack, vertexConsumer, i, OverlayTexture.RED_OVERLAY_V);
             ci.cancel();
         }
     }
