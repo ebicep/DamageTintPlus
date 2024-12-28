@@ -10,7 +10,9 @@ import dev.architectury.event.events.client.ClientTickEvent
 import net.minecraft.client.Minecraft
 import net.minecraft.client.renderer.RenderStateShard
 import net.minecraft.client.renderer.RenderType
+import net.minecraft.client.renderer.entity.layers.EquipmentLayerRenderer
 import net.minecraft.resources.ResourceLocation
+import net.minecraft.util.TriState
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 import java.awt.Color
@@ -21,6 +23,8 @@ object DamageTintPlus {
 
     val LOGGER: Logger = LogManager.getLogger(MOD_ID)
     var updateTintColor = false
+    var lastRenderer: EquipmentLayerRenderer? = null
+    var lastHurt: Boolean = false
 
     fun init() {
         Config.load()
@@ -41,7 +45,7 @@ object DamageTintPlus {
             RenderType.CompositeState
                 .builder()
                 .setShaderState(RenderStateShard.RENDERTYPE_ENTITY_CUTOUT_NO_CULL_SHADER)
-                .setTextureState(RenderStateShard.TextureStateShard(resourceLocation, false, false))
+                .setTextureState(RenderStateShard.TextureStateShard(resourceLocation, TriState.FALSE, false))
                 .setTransparencyState(RenderStateShard.NO_TRANSPARENCY)
                 .setCullState(RenderStateShard.NO_CULL)
                 .setLightmapState(RenderStateShard.LIGHTMAP)
@@ -69,10 +73,10 @@ object DamageTintPlus {
         for (i in 0..15) {
             for (j in 0..15) {
                 if (i < 8) {
-                    nativeImage.setPixelRGBA(j, i, color)
+                    nativeImage.setPixel(j, i, color)
                 } else {
                     val k = ((1.0f - j.toFloat() / 15.0f * 0.75f) * 255.0f).toInt()
-                    nativeImage.setPixelRGBA(j, i, k shl 24 or 16777215)
+                    nativeImage.setPixel(j, i, k shl 24 or 16777215)
                 }
             }
         }
@@ -85,18 +89,10 @@ object DamageTintPlus {
 
     private fun getTintColor(): Int {
         return if (Config.values.overrideVanillaColor) {
-            argbToAbgr(Color(Config.values.overrideColor, true).rgb)
+            Color(Config.values.overrideColor, true).rgb
         } else {
-            -1308622593
+            -1291911168
         }
-    }
-
-    private fun argbToAbgr(argb: Int): Int {
-        val alpha = argb shr 24 and 0xFF
-        val red = argb shr 16 and 0xFF
-        val green = argb shr 8 and 0xFF
-        val blue = argb and 0xFF
-        return (alpha shl 24) or (blue shl 16) or (green shl 8) or red
     }
 
 }

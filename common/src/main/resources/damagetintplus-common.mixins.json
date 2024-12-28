@@ -4,10 +4,13 @@
   "package": "com.ebicep.damagetintplus.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "CustomHeadLayerMixin"
   ],
   "client": [
+    "EquipmentLayerRendererMixin",
     "HorseArmorLayerMixin",
-    "ItemInHandRendererMixin",
+    "HumanoidArmorLayerMixin",
+    "ItemInHandLayerMixin",
     "MixinGameRenderer"
   ],
   "injectors": {
