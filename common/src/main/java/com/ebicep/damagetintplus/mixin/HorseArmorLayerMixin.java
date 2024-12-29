@@ -7,6 +7,7 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.layers.EquipmentLayerRenderer;
 import net.minecraft.client.renderer.entity.layers.HorseArmorLayer;
 import net.minecraft.client.renderer.entity.state.HorseRenderState;
+import net.minecraft.client.resources.model.EquipmentClientInfo;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -29,10 +30,9 @@ public class HorseArmorLayerMixin {
             )
     )
     public void render(PoseStack poseStack, MultiBufferSource multiBufferSource, int i, HorseRenderState horseRenderState, float f, float g, CallbackInfo ci) {
-        if (Config.INSTANCE.getValues().getShowOnHorseArmor()) {
-            DamageTintPlus.INSTANCE.setLastRenderer(equipmentRenderer);
-            DamageTintPlus.INSTANCE.setLastHurt(horseRenderState.hasRedOverlay);
-        }
+        DamageTintPlus.INSTANCE.setEquipmentLayerType(EquipmentClientInfo.LayerType.HORSE_BODY);
+        DamageTintPlus.INSTANCE.setLastRenderer(equipmentRenderer);
+        DamageTintPlus.INSTANCE.setLastHurt(horseRenderState.hasRedOverlay && Config.INSTANCE.getValues().getShowOnHorseArmor());
     }
 
 

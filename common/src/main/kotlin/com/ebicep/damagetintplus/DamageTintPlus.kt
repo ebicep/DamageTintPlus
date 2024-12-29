@@ -11,6 +11,7 @@ import net.minecraft.client.Minecraft
 import net.minecraft.client.renderer.RenderStateShard
 import net.minecraft.client.renderer.RenderType
 import net.minecraft.client.renderer.entity.layers.EquipmentLayerRenderer
+import net.minecraft.client.resources.model.EquipmentClientInfo
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.util.TriState
 import org.apache.logging.log4j.LogManager
@@ -23,6 +24,7 @@ object DamageTintPlus {
 
     val LOGGER: Logger = LogManager.getLogger(MOD_ID)
     var updateTintColor = false
+    var equipmentLayerType: EquipmentClientInfo.LayerType? = null
     var lastRenderer: EquipmentLayerRenderer? = null
     var lastHurt: Boolean = false
 

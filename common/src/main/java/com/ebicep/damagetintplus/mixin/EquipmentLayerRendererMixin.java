@@ -6,6 +6,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.entity.layers.EquipmentLayerRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.client.resources.model.EquipmentClientInfo;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.equipment.trim.ArmorTrim;
 import org.spongepowered.asm.mixin.Mixin;
@@ -23,9 +24,14 @@ public class EquipmentLayerRendererMixin {
             ),
             index = 1
     )
-    private RenderType layerRenderType(RenderType arg2, @Local(ordinal = 1) ResourceLocation resourceLocation3) {
+    private RenderType layerRenderType(
+            RenderType arg2,
+            @Local(ordinal = 1) ResourceLocation resourceLocation3,
+            @Local(argsOnly = true) EquipmentClientInfo.LayerType layerType
+    ) {
         if (
-                DamageTintPlus.INSTANCE.getLastRenderer() == (Object) this &&
+                DamageTintPlus.INSTANCE.getEquipmentLayerType() == layerType &&
+                        DamageTintPlus.INSTANCE.getLastRenderer() == (Object) this &&
                         DamageTintPlus.INSTANCE.getLastHurt()
         ) {
             return DamageTintPlus.INSTANCE.getOverrideRenderType(resourceLocation3);
@@ -59,9 +65,14 @@ public class EquipmentLayerRendererMixin {
             ),
             index = 0
     )
-    private RenderType trimRenderType(RenderType renderType, @Local ArmorTrim armorTrim) {
+    private RenderType trimRenderType(
+            RenderType renderType,
+            @Local ArmorTrim armorTrim,
+            @Local(argsOnly = true) EquipmentClientInfo.LayerType layerType
+    ) {
         if (
-                DamageTintPlus.INSTANCE.getLastRenderer() == (Object) this &&
+                DamageTintPlus.INSTANCE.getEquipmentLayerType() == layerType &&
+                        DamageTintPlus.INSTANCE.getLastRenderer() == (Object) this &&
                         DamageTintPlus.INSTANCE.getLastHurt()
         ) {
             return DamageTintPlus.INSTANCE.getOverrideRenderType(Sheets.ARMOR_TRIMS_SHEET);
