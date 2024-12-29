@@ -83,7 +83,9 @@ object DamageTintPlus {
 
         RenderSystem.activeTexture(33985)
         texture.bind()
-        nativeImage.upload(0, 0, 0, 0, 0, nativeImage.width, nativeImage.height, false, true, false, false)
+        texture.setFilter(false, false)
+        texture.setClamp(true)
+        nativeImage.upload(0, 0, 0, 0, 0, nativeImage.width, nativeImage.height, false)
         RenderSystem.activeTexture(33984)
     }
 
