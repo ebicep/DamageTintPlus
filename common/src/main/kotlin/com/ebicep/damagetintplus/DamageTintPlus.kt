@@ -11,6 +11,7 @@ import net.minecraft.client.Minecraft
 import net.minecraft.client.renderer.RenderStateShard
 import net.minecraft.client.renderer.RenderType
 import net.minecraft.client.renderer.entity.layers.EquipmentLayerRenderer
+import net.minecraft.client.renderer.entity.state.LivingEntityRenderState
 import net.minecraft.client.resources.model.EquipmentClientInfo
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.util.TriState
@@ -26,6 +27,8 @@ object DamageTintPlus {
     var updateTintColor = false
     var equipmentLayerType: EquipmentClientInfo.LayerType? = null
     var lastRenderer: EquipmentLayerRenderer? = null
+    var lastLivingEntityRenderState: LivingEntityRenderState? = null
+    var customHeadRender = false
     var lastHurt: Boolean = false
 
     fun init() {
@@ -41,7 +44,7 @@ object DamageTintPlus {
             "damagetintplus_override",
             DefaultVertexFormat.NEW_ENTITY,
             VertexFormat.Mode.QUADS,
-            256,
+            1536,
             true,
             false,
             RenderType.CompositeState

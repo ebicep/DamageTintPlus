@@ -10,8 +10,15 @@
     "EquipmentLayerRendererMixin",
     "HorseArmorLayerMixin",
     "HumanoidArmorLayerMixin",
+    "ICompositeRenderTypeMixin",
+    "IMixinCompositeState",
+    "IMixinMultiTextureStateShard",
+    "IMixinTextureStateShard",
     "ItemInHandLayerMixin",
-    "MixinGameRenderer"
+    "LayerRenderStateMixin",
+    "MixinGameRenderer",
+    "SkullBlockRendererMixin",
+    "SkullSpecialRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
