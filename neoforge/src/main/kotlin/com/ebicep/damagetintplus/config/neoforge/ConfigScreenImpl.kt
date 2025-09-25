@@ -36,6 +36,10 @@ object ConfigScreenImpl {
             { Config.values.showOnHorseArmor = it }
         )
         general.addEntry(
+            entryBuilder.booleanToggle("damageTintPlus.config.showOnItems.enabled", Config.values.showOnItems)
+            { Config.values.showOnItems = it }
+        )
+        general.addEntry(
             entryBuilder.booleanToggle("damageTintPlus.config.overrideColorEnabled", Config.values.overrideVanillaColor)
             { Config.values.overrideVanillaColor = it }
         )

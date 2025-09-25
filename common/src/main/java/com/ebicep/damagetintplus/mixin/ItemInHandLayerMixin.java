@@ -1,5 +1,6 @@
 package com.ebicep.damagetintplus.mixin;
 
+import com.ebicep.damagetintplus.config.Config;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
 import net.minecraft.client.renderer.entity.state.ArmedEntityRenderState;
@@ -20,7 +21,7 @@ public class ItemInHandLayerMixin {
             index = 3
     )
     private int renderToBuffer(int i, @Local(argsOnly = true) ArmedEntityRenderState armedEntityRenderState) {
-        if (armedEntityRenderState.hasRedOverlay) {
+        if (Config.INSTANCE.getValues().getShowOnItems() && armedEntityRenderState.hasRedOverlay) {
             return OverlayTexture.RED_OVERLAY_V;
         }
         return i;

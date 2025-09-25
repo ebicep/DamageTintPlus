@@ -58,6 +58,7 @@ object Config {
 data class ConfigVariables(
     var showOnPlayerArmor: Boolean = true,
     var showOnHorseArmor: Boolean = true,
+    var showOnItems: Boolean = true,
 ) {
     var overrideVanillaColor: Boolean = true
         set(value) {

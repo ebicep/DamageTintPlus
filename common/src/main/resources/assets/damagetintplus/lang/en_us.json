@@ -5,6 +5,8 @@
   "damageTintPlus.config.showOnPlayerArmor.enabled.tooltip": "Show damage tint on player armor.",
   "damageTintPlus.config.showOnHorseArmor.enabled": "Show on Horse Armor",
   "damageTintPlus.config.showOnHorseArmor.enabled.tooltip": "Show damage tint on horse armor.",
+  "damageTintPlus.config.showOnItems.enabled": "Show on Items",
+  "damageTintPlus.config.showOnItems.enabled.tooltip": "Show damage tint on items in player's hands.",
   "damageTintPlus.config.overrideColorEnabled": "Override Vanilla Color",
   "damageTintPlus.config.overrideColorEnabled.tooltip": "Override the vanilla damage color.",
   "damageTintPlus.config.overrideColor": "Override Color",
